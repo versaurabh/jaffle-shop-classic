@@ -10,7 +10,9 @@ expensive_returned as (
 ),
 
 final as (
-    select * from expensive_completed, expensive_returned
+    select expensive_completed.customer_id, expensive_completed.first_name, expensive_completed.last_name,
+    expensive_completed, expensive_returned
+    from expensive_completed, expensive_returned
     where expensive_completed.customer_id = expensive_returned.customer_id
 )
 
