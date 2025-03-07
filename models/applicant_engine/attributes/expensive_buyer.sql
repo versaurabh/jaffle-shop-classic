@@ -29,7 +29,7 @@ select
     payments
   where
     customers.customer_id = orders.customer_id
-    and payments.order_id = payments.order_id
+    and orders.order_id = payments.order_id
   group by
     customers.customer_id,
     customers.first_name,
