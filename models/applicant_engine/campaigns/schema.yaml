@@ -1,0 +1,14 @@
+version: 2
+
+models:
+    - name: all_expensive_completed_returned
+      columns:
+        - name: customer_id
+          tests:
+            - unique
+            - not_null
+        - name: first_name
+        - name: last_name
+        - name: expensive_completed
+        - name: expensive_returned
+  

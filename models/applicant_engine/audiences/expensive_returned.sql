@@ -11,7 +11,7 @@ returned as (
 ),
 
 final as (
-    select distinct expensive.customer_id, expensive.first_name, expensive.last_name, TRUE as expensive_completed
+    select distinct expensive.customer_id, expensive.first_name, expensive.last_name, TRUE as expensive_returned
     from expensive, returned
     where expensive.customer_id = returned.customer_id
 )

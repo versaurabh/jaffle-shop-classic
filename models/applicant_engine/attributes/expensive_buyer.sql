@@ -29,7 +29,6 @@ select
     payments
   where
     customers.customer_id = orders.customer_id
-    and orders.status = 'completed'
     and payments.order_id = payments.order_id
   group by
     customers.customer_id,
