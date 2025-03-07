@@ -1,0 +1,23 @@
+version: 2
+
+models:
+    - name: atleast_one_order_completed
+      columns:
+        - name: customer_id
+          tests:
+            - unique
+            - not_null
+        - name: customers.first_name
+        - name: customers.last_name
+        - name: atleast_one_order_completed
+  
+    - name: expensive_buyer
+      columns:
+        - name: customer_id
+          tests:
+            - unique
+            - not_null
+        - name: customers.first_name
+        - name: customers.last_name
+        - name: avg_amt
+        - name: expensive_buyer
