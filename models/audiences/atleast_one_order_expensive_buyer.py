@@ -1,7 +1,7 @@
 def model(dbt, session):
     dbt.config(
-        # submission_method="serverless_cluster",
-        cluster_id = "0307-180933-gziyazvd",
+        submission_method="serverless_cluster",
+        # cluster_id = "0307-180933-gziyazvd",
         create_notebook=False,
     )
 
@@ -16,5 +16,7 @@ def model(dbt, session):
 
     # your final 'select' statement
     df = atleast_one_order_completed.join(expensive_buyer, "customer_id")
+
+    df.write.format("delta").mode('overwrite').save("/Workspace/Users/innov.verma.saurabh@gmail.com/tmp/df")
 
     return df
