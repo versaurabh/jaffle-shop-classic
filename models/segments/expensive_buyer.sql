@@ -16,8 +16,8 @@ final as (
     where customers.customer_id = orders.customer_id
     and orders.status = 'completed'
   group by customers.customer_id, customers.first_name, customers.last_name
-  having avgAmt > 20
-  order by avgAmt desc
+  having avg_amt > 20
+  order by avg_amt desc
 )
 
 select * from final
