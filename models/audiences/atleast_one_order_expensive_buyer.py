@@ -1,6 +1,7 @@
 def model(dbt, session):
     dbt.config(
-        materialized='table'
+        submission_method="job_cluster",
+        create_notebook=True,
     )
 
     cols_needed = {
