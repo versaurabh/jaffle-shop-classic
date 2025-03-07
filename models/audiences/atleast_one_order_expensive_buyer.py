@@ -1,7 +1,7 @@
 def model(dbt, session):
     dbt.config(
-        submission_method="job_cluster",
-        create_notebook=True,
+        submission_method="serverless_cluster",
+        create_notebook=False,
     )
 
     cols_needed = {
