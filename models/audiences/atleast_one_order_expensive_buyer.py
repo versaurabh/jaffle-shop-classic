@@ -1,7 +1,7 @@
 def model(dbt, session):
     dbt.config(
         # submission_method="serverless_cluster",
-        http_path = "/sql/1.0/warehouses/6177e39cfc5194cf",
+        cluster_id = "0307-180933-gziyazvd",
         create_notebook=False,
     )
 
