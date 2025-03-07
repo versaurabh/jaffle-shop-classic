@@ -1,4 +1,4 @@
-from pyspark.sql.functions import col, coalesce, first
+from pyspark.sql.functions import col, coalesce, first, lit
 
 def model(dbt, session):
     # setting configuration
@@ -8,12 +8,12 @@ def model(dbt, session):
     )
 
     dataframes = [
-        "atleast_one_order_completed",
-        "atleast_one_order_returned",
-        "expensive_buyer",
-        "expensive_completed",
-        "expensive_returned",
-        "all_expensive_completed_returned",
+        dbt.ref("atleast_one_order_completed"),
+        dbt.ref("atleast_one_order_returned"),
+        dbt.ref("expensive_buyer"),
+        dbt.ref("expensive_completed"),
+        dbt.ref("expensive_returned"),
+        dbt.ref("all_expensive_completed_returned"),
     ]
 
     group_key = "customer_id"
@@ -41,7 +41,7 @@ def model(dbt, session):
     agg_exprs = [coalesce(first(col(c)), first(col(c))).alias(c) for c in columns_to_coalesce]
 
     # Perform groupBy and aggregation
-    df_grouped = df.groupBy(group_key).agg(*agg_exprs)
+    df_grouped = final_df.groupBy(group_key).agg(*agg_exprs)
 
     # Show Result
     df_grouped.show()

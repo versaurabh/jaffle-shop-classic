@@ -10,5 +10,4 @@ models:
         - name: first_name
         - name: last_name
         - name: expensive_completed
-        - name: expensive_returned
   
